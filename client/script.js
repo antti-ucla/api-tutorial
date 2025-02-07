@@ -1,4 +1,4 @@
-const ENDPOINT = "http://localhost:11434/api/generate";
+const ENDPOINT = "http://localhost:3000/api/prompt";
 
 const formElement = document.getElementById("form");
 const responseElement = document.getElementById("response");
@@ -21,7 +21,7 @@ formElement.addEventListener("submit", async (event) => {
   const prompt = inputElement.value;
 
   const requestBody = {
-    model: "deepseek-r1:32b",
+    //model: "deepseek-r1:32b",
     prompt,
   };
   try {
