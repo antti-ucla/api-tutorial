@@ -16,8 +16,6 @@ app.post("/api/prompt", async (req, res) => {
     return res.status(400).json({ error: "Prompt is required" });
   }
 
-  console.log("Received prompt:", prompt);
-
   try {
     const response = await fetch(ENDPOINT, {
       method: "POST",
@@ -44,10 +42,9 @@ app.post("/api/prompt", async (req, res) => {
     while (true) {
       const { done, value } = await reader.read();
       if (done) {
-        console.log("Stream finished");
+        res.end();
         break;
       }
-      console.log("Received chunk:", decoder.decode(value, { stream: true }));
       current = JSON.parse(decoder.decode(value, { stream: true }));
       res.write(
         JSON.stringify({
