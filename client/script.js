@@ -1,4 +1,4 @@
-const ENDPOINT = "http://localhost:3000/api/prompt";
+const TEXT_ENDPOINT = "http://localhost:8001/api/prompt";
 const AUDIO_ENDPOINT = "http://localhost:8000/stream_audio";
 
 const formElement = document.getElementById("form");
@@ -24,16 +24,17 @@ formElement.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const textButton = document.getElementById("text-button");
-  const audioButton = document.getElementById("audio-button");
+  //const audioButton = document.getElementById("audio-button");
 
-  if (!textButton || !audioButton) {
-    throw new Error("Button elements not found");
+  if (!textButton) {
+    throw new Error("Text button not found");
   }
 
   textButton.disabled = true;
-  audioButton.disabled = true;
+  //audioButton.disabled = true;
 
   const prompt = inputElement.value;
+
   const button = event.submitter;
 
   try {
@@ -55,7 +56,7 @@ formElement.addEventListener("submit", async (event) => {
   } finally {
     formElement.reset();
     textButton.disabled = false;
-    audioButton.disabled = false;
+    //audioButton.disabled = false;
   }
 });
 
@@ -78,16 +79,13 @@ const handleAudioStream = (prompt) => {
  * @argument {string} prompt
  */
 const handleTextStream = async (prompt) => {
-  const response = await fetch(
-    button.id === "audio-button" ? AUDIO_ENDPOINT : ENDPOINT,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ prompt }),
-    }
-  );
+  const response = await fetch(TEXT_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ prompt }),
+  });
 
   responseElement.innerText = "";
   const reader = response.body.getReader();
@@ -104,6 +102,6 @@ const handleTextStream = async (prompt) => {
       console.log("done received");
       break;
     }
-    responseElement.innerText += current.response;
+    responseElement.innerText += current.message.content;
   }
 };
