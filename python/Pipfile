@@ -5,6 +5,14 @@ name = "pypi"
 
 [packages]
 kokoro = "*"
+soundfile = "*"
+fastapi = "*"
+ollama = "*"
+uvicorn = "*"
+pyaudio = "*"
+jupyterlab = "*"
+openai = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
