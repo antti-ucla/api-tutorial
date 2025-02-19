@@ -25,7 +25,8 @@ p = pyaudio.PyAudio()
 
 client = Client(host='http://localhost:11434/')
 
-
+# A small server that streams audio from a text prompt. First the text is sent to the chat model and then the text is sent to the text-to-speech model.
+# Currently not working fast because the text-to-speech model is running only on one CPU core. I have to add multi-threading to make it work faster.
 @app.get('/stream_audio')
 async def stream_audio(request: Request, prompt: str = Query(...) ):
     print('prompt: ' + str(prompt))

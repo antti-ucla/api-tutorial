@@ -6,6 +6,7 @@ import json
 
 app = FastAPI()
 
+# a workaround to get rid of CORS issues on localhost, do not use in production
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
