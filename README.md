@@ -1,6 +1,6 @@
-## API Tutorial files
+## API Tutorials
 
-This is a collection of several tutorial and demos about AI APIs.
+This is a collection of tutorials and demos about AI Web APIs.
 
 ### Basic tutorial
 
@@ -16,11 +16,11 @@ The directory `client` contains a simple browser client that allows you prompt a
 
 1. To use the text streaming server, you need to have Ollama installed and running. You can get it from https://ollama.ai/.
 
-2. You need to download the "deepseek-r1:7b" model from Ollama and start it. You can do this by running `ollama run deepseek-r1:7b` in a terminal.
+2. You need to download the `deepseek-r1:7b` model from Ollama and start it. You can do this by running `ollama run deepseek-r1:7b` in a terminal.
 
-3. Open the client by opening the "client/index.html" file in a browser.
+3. Start the chat interface by opening `client/index.html` in a browser.
 
-4. Start the text streaming server by first running `cd ~/api-tutorial/python` in a terminal and then `pipenv run python3 text_streaming.py`.
+4. Start the text streaming server by first running `cd ~/api-tutorial/python` in a terminal and then `pipenv run python3 text_streaming.py` (or just `python3 text_streaming.py` if not using a virtual environment).
 
 ### Other in progress work
 
